@@ -4,7 +4,7 @@ import { testDB } from './modules/connect.js'
 import sequelize from './modules/connect.js'
 
 
-
+const server = express()
 
 server.use(express.json())
 server.use(cors());
@@ -29,7 +29,7 @@ server.listen(process.env.PORT || 3001, async() => {
     console.log(`Server is running`);
     await testDB();
     await sequelize.sync({ logging: true, alter: true });
-    // await testDB();
+    
     // await sequelize.sync({ logging: true });
 });
 
