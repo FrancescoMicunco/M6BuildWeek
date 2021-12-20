@@ -1,7 +1,7 @@
 import express from "express";
 import { Op, Sequelize } from "sequelize";
-import tasks from "../../modules/tasks.js";
-import Tasks from "../../modules/tasks.js";
+import Planner from "../../modules/planner_model.js";
+import Tasks from "../../modules/task_model.js";
 
 const router = express.Router();
 

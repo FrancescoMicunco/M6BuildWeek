@@ -10,6 +10,9 @@ import {
 } from "./middlewares/errorsHandler.js";
 import plannerRouter from './source/planners/index.js'
 import taskRouter from './source/tasks/index.js'
+import Planner from './modules/planner_model.js';
+import Task from './modules/task_model.js';
+import listEndpoints from 'express-list-endpoints';
 
 
 
@@ -45,8 +48,8 @@ server.use("/task", taskRouter);
 //========= connection area =====================
 //===============================================
 
-Planner.hasMany(Tasks, { onDelete: "CASCADE" });
-Tasks.belongsTo(Planners, { onDelete: "CASCADE" });
+Planner.hasMany(Task, { onDelete: "CASCADE" });
+Task.belongsTo(Planner, { onDelete: "CASCADE" });
 
 
 //==============ERRORS =====================
@@ -56,7 +59,7 @@ server.use(unauthorized);
 server.use(notFound);
 server.use(genericErr);
 
-console.table(listendpoints(server));
+//console.table(listendpoints(server));
 server.listen(process.env.PORT || 3001, async() => {
     console.log(`Server is running`);
     await testDB();
