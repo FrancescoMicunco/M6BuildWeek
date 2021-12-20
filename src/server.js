@@ -59,11 +59,11 @@ server.use(unauthorized);
 server.use(notFound);
 server.use(genericErr);
 
-//console.table(listendpoints(server));
+console.table(listEndpoints(server));
 server.listen(process.env.PORT || 3001, async() => {
     console.log(`Server is running`);
     await testDB();
-    await sequelize.sync({ logging: true, alter: true });
+    await sequelize.sync({ logging: false, alter: true });
 
     // await sequelize.sync({ logging: true });
 });
