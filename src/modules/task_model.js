@@ -3,7 +3,7 @@ import s from 'sequelize'
 
 const { DataTypes } = s
 
-const Task = sequelize.define(
+const Tasks = sequelize.define(
     'task',
     {
         id: {
@@ -27,4 +27,4 @@ const Task = sequelize.define(
 
 
 
-export default Task
+export default Tasks

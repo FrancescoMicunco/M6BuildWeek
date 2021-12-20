@@ -1,7 +1,7 @@
-import Task from "./task_model";
-import Planner from "./planner_model";
+import Tasks from "./task_model";
+import Planners from "./planner_model";
 
-Planner.hasMany(Task, { onDelete: "CASCADE" });
-Task.belongsTo(Planner, { onDelete: "CASCADE" });
+Planners.hasMany(Tasks, { onDelete: "CASCADE" });
+Tasks.belongsTo(Planners, { onDelete: "CASCADE" });
 
-export {Task, Planner}
+export {Tasks, Planners}
