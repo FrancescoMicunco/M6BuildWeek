@@ -4,7 +4,7 @@ import s from 'sequelize'
 
 const { DataTypes } = s
 
-const Planner = sequelize.define(
+const Planners = sequelize.define(
     'planner',
     {
         id: {
@@ -24,4 +24,4 @@ const Planner = sequelize.define(
 
 
 
-export default Planner
+export default Planners
