@@ -10,6 +10,11 @@ const port = process.env.PORT
 server.use(express.json())
 server.use(cors());
 
+// ==========  end points ===============
+//=======================================
+
+server.use("/tasks", tasksRouter);
+server.use("/planners", plannersRouter);
 
 //========= connection area =====================
 //===============================================
