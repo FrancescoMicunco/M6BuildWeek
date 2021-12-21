@@ -7,16 +7,16 @@ const sequelize = new Sequelize(
     DB_URL,
 
     {
-        dialect: "postgres",
+        //     dialect: "postgres",
 
         dialectOptions: {
-
             ssl: {
                 require: true,
                 rejectUnauthorized: false,
-            },
-        },
+            }
+        }
     }
+    //}
 );
 
 
