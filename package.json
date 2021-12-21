@@ -7,8 +7,10 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node src/server.js",
-
         "dev": "nodemon -r dotenv/config src/server.js"
+    },
+    "engines": {
+        "node": "v16.13.1"
     },
     "keywords": [],
     "author": "",

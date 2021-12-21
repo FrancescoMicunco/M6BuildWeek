@@ -4,7 +4,23 @@ import { Sequelize } from "sequelize";
 
 const { DB_URL } = process.env;
 
-const sequelize = new Sequelize(DB_URL);
+const sequelize = new Sequelize(
+    DB_URL,
+
+    {
+        dialect: "postgres",
+
+        dialectOptions: {
+
+            // ssl: {
+            //     require: true,
+            //     rejectUnauthorized: false,
+            // },
+        },
+    }
+);
+
+
 
 export const testDB = async() => {
     try {
