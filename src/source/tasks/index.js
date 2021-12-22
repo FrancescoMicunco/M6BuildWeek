@@ -10,7 +10,7 @@ router
     .get(async(req, res, next) => {
         try {
             const task = await Tasks.findAll({
-                include: Planner,
+                include: [Planner],
             });
             res.send(task);
         } catch (error) {
@@ -35,7 +35,6 @@ router
                     id: req.params.id,
                 },
                 include: [Planner],
-
             });
             res.send(task);
         } catch (error) {
