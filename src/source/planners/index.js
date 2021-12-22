@@ -3,7 +3,6 @@ import { Op, Sequelize } from "sequelize";
 import Planner from "../../modules/planner_model.js";
 import Tasks from "../../modules/task_model.js";
 
-
 const router = express.Router();
 
 router
@@ -13,43 +12,36 @@ router
             const planner = await Planner.findAll({
                 where: {
                     ...(req.query.search && {
-                      [Op.or]: [
-                        {
-                          name: { [Op.iLike]: `%${req.query.search}%` },
-                        },
-                        
-                      ],
+                        [Op.or]: [{
+                            name: {
+                                [Op.iLike]: `%${req.query.search}%` },
+                        }, ],
                     }),
                 },
-                include: 
-                    {
-                      model: Tasks,
-                      through: { attributes: [] },}
-                      , 
-          
-                      //filters by tasks
-                      where: {
-                        ...(req.query.search && {
-                           
-                            [Op.or]: [
-                              {
-                                content: { [Op.iLike]: `%${req.query.search}%` },
-                              },
-                              {
-                                done: { [Op.iLike]: `%${req.query.search}%` },
-                              },
-                              {
-                                "$planner.name$": {
-                                  
-                                  [Op.iLike]: "%" + req.query.search + "%",
-                                },
-                              }, ]
-                      }),
-                    },
-            
-                 
-              
+                include: {
+                    model: Tasks,
+                    through: { attributes: [] },
+                },
+                //filters by tasks
+                where: {
+                    ...(req.query.search && {
+                        [Op.or]: [{
+                                content: {
+                                    [Op.iLike]: `%${req.query.search}%` },
+                            },
+                            {
+                                done: {
+                                    [Op.iLike]: `%${req.query.search}%` },
+                            },
+                            //   {
+                            //     "$planner.name$": {
 
+                            //       [Op.iLike]: "%" + req.query.search + "%",
+                            //     },
+                            //     },
+                        ],
+                    }),
+                },
             });
             res.send(planner);
         } catch (error) {
@@ -58,7 +50,6 @@ router
     })
     .post(async(req, res, next) => {
         try {
-
             const planner = await Planner.create(req.body);
 
             res.send(planner);
