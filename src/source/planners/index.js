@@ -18,10 +18,12 @@ router
                 //         }, ],
                 //     }),
                 // },
-                include: {
-                    model: Tasks,
-                    through: { attributes: [] },
-                },
+                include: [Tasks],
+                // include: {
+
+                //     Tasks,
+                //     through: { attributes: [] },
+                // },
                 //filters by tasks
                 // where: {
                 //     ...(req.query.search && {
