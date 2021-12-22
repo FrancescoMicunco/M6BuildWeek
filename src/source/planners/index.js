@@ -22,9 +22,9 @@ router
                     }),
                 },
                 include: 
-                    {
+                   [ {
                       model: Tasks,
-                      through: { attributes: [] },}
+                      through: { attributes: [] },}]
                       , 
           
                       //filters by tasks
@@ -45,8 +45,8 @@ router
                                 },
                               }, ]
                       }),
-                    },
-            
+                    }
+                
                  
               
 
