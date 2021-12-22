@@ -19,18 +19,18 @@ const server = express();
 // =================  MIDDELWARES ===============
 //==============================================
 
-const { FE_REMOTE_URL, FE_LOCAL_URL } = process.env;
-const whiteList = [FE_REMOTE_URL, FE_LOCAL_URL];
-const corsOption = {
-    origin: function(origin, next) {
-        if (!origin || whiteList.indexOf(origin) !== -1) {
-            next(null, true);
-        } else {
-            next(new Error("Cors Error occurred!"));
-        }
-    }
-};
-server.use(cors(corsOption));
+// const { FE_REMOTE_URL, FE_LOCAL_URL } = process.env;
+// const whiteList = [FE_REMOTE_URL, FE_LOCAL_URL];
+// const corsOption = {
+//     origin: function(origin, next) {
+//         if (!origin || whiteList.indexOf(origin) !== -1) {
+//             next(null, true);
+//         } else {
+//             next(new Error("Cors Error occurred!"));
+//         }
+//     }
+// };
+server.use(cors());
 server.use(express.json());
 
 // ==========  end points ===============
