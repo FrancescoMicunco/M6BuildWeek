@@ -19,7 +19,8 @@ const server = express();
 // =================  MIDDELWARES ===============
 //==============================================
 
-const whiteList = [process.env.FE_REMOTE_URL, process.env.FE_LOCAL_URL];
+const { FE_REMOTE_URL, FE_LOCAL_URL } = process.env;
+const whiteList = [FE_REMOTE_URL, FE_LOCAL_URL];
 const corsOption = {
     origin: function(origin, next) {
         if (!origin || whiteList.indexOf(origin) !== -1) {
