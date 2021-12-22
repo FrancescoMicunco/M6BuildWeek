@@ -1,25 +1,17 @@
 import { Sequelize } from "sequelize";
 
+const { DATABASE_URL } = process.env;
 
-const { DB_URL } = process.env;
+const sequelize = new Sequelize(DATABASE_URL, {
+    dialect: "postgres",
 
-const sequelize = new Sequelize(
-    DB_URL,
-
-    {
-        //     dialect: "postgres",
-
-        dialectOptions: {
-            ssl: {
-                require: true,
-                rejectUnauthorized: false,
-            }
-        }
-    }
-    //}
-);
-
-
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false,
+        },
+    },
+});
 
 export const testDB = async() => {
     try {
