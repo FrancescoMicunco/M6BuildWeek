@@ -10,38 +10,38 @@ router
     .get(async(req, res, next) => {
         try {
             const planner = await Planner.findAll({
-                where: {
-                    ...(req.query.search && {
-                        [Op.or]: [{
-                            name: {
-                                [Op.iLike]: `%${req.query.search}%` },
-                        }, ],
-                    }),
-                },
+                // where: {
+                //     ...(req.query.search && {
+                //         [Op.or]: [{
+                //             name: {
+                //                 [Op.iLike]: `%${req.query.search}%` },
+                //         }, ],
+                //     }),
+                // },
                 include: {
                     model: Tasks,
                     through: { attributes: [] },
                 },
                 //filters by tasks
-                where: {
-                    ...(req.query.search && {
-                        [Op.or]: [{
-                                content: {
-                                    [Op.iLike]: `%${req.query.search}%` },
-                            },
-                            {
-                                done: {
-                                    [Op.iLike]: `%${req.query.search}%` },
-                            },
-                            //   {
-                            //     "$planner.name$": {
+                // where: {
+                //     ...(req.query.search && {
+                //         [Op.or]: [{
+                //                 content: {
+                //                     [Op.iLike]: `%${req.query.search}%` },
+                //             },
+                //             {
+                //                 done: {
+                //                     [Op.iLike]: `%${req.query.search}%` },
+                //             },
+                //             //   {
+                //             //     "$planner.name$": {
 
-                            //       [Op.iLike]: "%" + req.query.search + "%",
-                            //     },
-                            //     },
-                        ],
-                    }),
-                },
+                //             //       [Op.iLike]: "%" + req.query.search + "%",
+                //             //     },
+                //             //     },
+                //         ],
+                //     }),
+                // },
             });
             res.send(planner);
         } catch (error) {
