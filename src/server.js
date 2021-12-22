@@ -28,7 +28,7 @@ const corsOption = {
         } else {
             next(new Error("Cors Error occurred!"));
         }
-    },
+    }
 };
 server.use(cors(corsOption));
 server.use(express.json());
